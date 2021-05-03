@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { centsToEuro } from '../../services/product/product'
 
 export default function CardProduct({ product }) {
@@ -12,6 +13,7 @@ export default function CardProduct({ product }) {
                     <h4 className="card-title">{product.name}</h4>
                     <p className="card-text">
                         <b>{centsToEuro(product.retail_price_cents)}€</b>
+                        <Link to={"product/"+product.id} className="btn btn-primary float-right">Voir</Link>
                     </p>
                 </div>
             </div>

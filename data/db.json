@@ -20,37 +20,23 @@
   "category": [
     {
       "id": 1,
-      "name": "Homme"
+      "name": "lifestyle"
     },
     {
       "id": 2,
-      "name": "Femme"
+      "name": "basketball"
     },
     {
       "id": 3,
-      "name": "Enfant"
-    }
-  ],
-  "product": [
+      "name": "running"
+    },
     {
-      "id": "1",
-      "title": "Tee shirt",
-      "description": "Tee shirt pour enfant de 8 ans",
-      "colors": [
-        "red",
-        "blue",
-        "green"
-      ],
-      "size": [
-        "XS",
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "price": "16.5",
-      "image": "url",
-      "categoryId": 1
+      "id": 4,
+      "name": "skateboarding"
+    },
+    {
+      "id": 5,
+      "name": "other"
     }
   ],
   "command": [

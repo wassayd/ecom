@@ -10,6 +10,7 @@ export default function Login(props) {
     const [credentatials, setCredentatials] = useState({email:'', password: ''})
     const [error, setError] = useState(false)
     const context = useContext(AuthContext)
+    
     const handleChange = event => {
         setError(false)
         const value = event.currentTarget.value;
