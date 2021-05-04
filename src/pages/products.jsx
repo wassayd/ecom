@@ -22,8 +22,13 @@ export default function Products() {
         const value = event.currentTarget.value;
         const name = event.currentTarget.name;
 
-        if(value === "all"){
-            setParams({})
+        if(value === "all" && name === "gender"){
+            setParams({...params, gender: null})
+            return;
+        }
+
+        if(value === "all" && name === "category"){
+            setParams({...params, category: null})
             return;
         }
 
@@ -32,7 +37,7 @@ export default function Products() {
 
     return (
         <>
-            <h1 className="my-3">Liste des produit</h1>
+            <h1 className="my-3">Products list</h1>
             <div className="row mb-4">
                 <div className="col-md-4">
                     <label htmlFor="gender">Gender</label>
@@ -40,17 +45,19 @@ export default function Products() {
                         <option value="all">All</option>
                         <option value="men">Men</option>
                         <option value="women">Women</option>
+                        <option value="youth">Youth</option>
                     </select>
                 </div>
                 <div className="col-md-4">
                     <label htmlFor="gender">Category</label>
                     <select name="category" id="category" className="form-control" onChange={handleChange}>
+                        s<option value="all">All</option>
                         {categories && categories.map((category, key) => <option key={key} value={category.name}>{category.name}</option>)}
                     </select>
                 </div>
             </div>
             <div className="row">
-                {product.length === 0 && 
+                {params.length === 0 && 
                     <div className="col-md-12">
                         <div className="alert alert-warning">Products not found</div>
                     </div>

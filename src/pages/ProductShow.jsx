@@ -7,7 +7,7 @@ import { centsToEuro, convertAllSize } from '../services/product/product'
 export default function ProductShow({match}) {
     const [product, setProduct] = useState({})
     const [size, setSize] = useState([])
-    const [cart, setCart] = useState({productId:"",quantity:1, size: ""})
+    const [cartline, setCartLine] = useState({product: {}, quantity:1, size: "", totalPrice:0})
 
     useEffect(() => {
         axios.get(BASE_URL+"/sneakers/"+match.params.id)
@@ -18,7 +18,7 @@ export default function ProductShow({match}) {
         .then((product)=> {
             const arrSorted = [... new Set(convertAllSize(product.size_range))].sort()
             setSize(arrSorted)
-            setCart({...cart,productId: product.id, size: arrSorted[0]})
+            setCartLine({...cartline, product, size: arrSorted[0]})
         })
     }, [])
 
@@ -26,14 +26,15 @@ export default function ProductShow({match}) {
         const value = event.currentTarget.value;
         const name = event.currentTarget.name;
  
-        setCart({...cart, [name]: value})
+        setCartLine({...cartline, [name]: value})
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        cart.price = centsToEuro(product.retail_price_cents)
-        cart.quantity = parseInt(cart.quantity)
-        addProductToCart(cart)
+        cartline.price = centsToEuro(product.retail_price_cents)
+        cartline.quantity = parseInt(cartline.quantity)
+        cartline.totalPrice = cartline.price * cartline.quantity
+        addProductToCart(cartline)
     }
 
     return (
@@ -50,17 +51,17 @@ export default function ProductShow({match}) {
                     <form className="mt-2" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="size"><b>Size :</b></label>
-                            <select name="size" id="size" className="form-control" onChange={handleChange} value={cart.size}>
+                            <select name="size" id="size" className="form-control" onChange={handleChange} value={cartline.size}>
                                 { size && size.map((s, key) => <option key={key}>{s}</option>)}
                             </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="quantity"><b>Quantity :</b></label>
-                            <input type="number" name="quantity" id="quantity" className="form-control" onChange={handleChange} value={cart.quantity}/>
+                            <input type="number" name="quantity" id="quantity" className="form-control" onChange={handleChange} value={cartline.quantity}/>
                         </div>
                         <button type="submit" className="btn btn-primary form-control">Add to cart</button>
                     </form>
-                    {product.story_html && <div className="content jumbotron" dangerouslySetInnerHTML={{__html:product.story_html}}></div>}
+                    {product.story_html && <div className="content jumbotron my-2" dangerouslySetInnerHTML={{__html:product.story_html}}></div>}
                 </div>
 
             </div>

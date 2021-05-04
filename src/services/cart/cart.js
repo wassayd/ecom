@@ -1,25 +1,29 @@
+import axios from "axios";
+
 const KEY_CART = 'cart';
 
-const getCart = () => {
+export const getCart = () => {
     return JSON.parse(localStorage.getItem(KEY_CART)) || [];
 }
 
-const setCart = (cart) => {
+export const setCart = (cart) => {
     localStorage.setItem(KEY_CART, JSON.stringify(cart));
 }
 
-export const addProductToCart = (product) => {
+export const addProductToCart = (productCart) => {
     const cart = getCart();
     
-    const command = cart.filter( (x) =>  x.id === product.id && x.size === product.size);
-
+    const command = cart.filter( (x) => {
+        console.log(x, productCart);
+        return  x.product.id === productCart.product.id && x.size === productCart.size
+    });
 
     if(command.length == 0) {
-        cart.push(product);
+        cart.push(productCart);
         setCart(cart);
     }else {
         const article = command[0];
-        article.quantity += parseInt(product.quantity);
+        article.quantity += parseInt(productCart.quantity);
         setCart(cart);
     }
 }

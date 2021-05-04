@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../../App'
 import { logout } from '../../services/user/auth'
 import Menuli from './menuli'
@@ -72,8 +73,8 @@ export default function Header() {
                     </li> */}
                 </ul>
                 <form className="form-inline my-2 my-lg-0">
-                    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i style={{fontSize:'14px'}} className="fas fa-user"></i></a>
-                    <a className="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i style={{fontSize:'14px'}} className="fas fa-shopping-cart"></i></a>
+                    <a className="btn btn-outline-light btn-floating m-1" href="#!"><i style={{fontSize:'14px'}} className="fas fa-user"></i></a>
+                    <Link className="btn btn-outline-light btn-floating m-1" to="/cart"><i style={{fontSize:'14px'}} className="fas fa-shopping-cart"></i></Link>
                     <input className="form-control mr-sm-2" type="text" placeholder="Search" />
                     <button className="btn btn-secondary my-2 my-sm-0" type="submit"><i style={{fontSize:'14px'}} className="fas fa-search"></i></button>
                 </form>

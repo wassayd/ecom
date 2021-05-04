@@ -1,4 +1,5 @@
 import About from "../pages/about"
+import Cart from "../pages/cart"
 import Contact from "../pages/contact"
 import Home from "../pages/home"
 import Login from "../pages/login"
@@ -37,7 +38,12 @@ const Rounting = [
         url: '/products',
         component: Products,
         secured: false
-     }
+     },
+     {
+      url: '/cart',
+      component: Cart,
+      secured: false
+   },
 
  ]
 
