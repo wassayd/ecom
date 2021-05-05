@@ -1,1 +1,13 @@
- 
+#nbProduct-container{
+    position: relative;
+}
+#nbProduct{
+    background-color: red;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 100;
+} 

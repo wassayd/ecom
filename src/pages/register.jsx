@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { setUserLocalStorage } from '../services/user/user.service';
 import { AuthContext } from '../App';
 import { Redirect } from 'react-router';
+import UserForm from './form/userForm';
 
 export default function Register() {
     const [credentials, setCredentials] = useState({
@@ -94,52 +95,7 @@ export default function Register() {
         <>
             <ToastContainer/>
             <h1>S'inscrire</h1>
-            <form onSubmit={handleSubmit} className="mb-5">
-                <fieldset> 
-                    <div className="form-group">
-                        <label htmlFor="gender">Civilité</label>
-                        <div className="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="gender" className="custom-control-input" onChange={handleChange} value="H"/>
-                            <label className="custom-control-label" htmlFor="customRadio1">Homme</label>
-                        </div>
-                        <div className="custom-control custom-radio">
-                            <input type="radio" id="customRadio2" name="gender" className="custom-control-input" onChange={handleChange} value="F"/>
-                            <label className="custom-control-label" htmlFor="customRadio2">Femme</label>
-                        </div>      
-                    </div>
-                </fieldset>
-                <Inputlabel type="text" label="Nom" name="lastname" value={credentials.lastname}
-                    placeholder="Veuillez saisir un nom" change={handleChange} />
-
-                <Inputlabel type="text" label="Prenom" name="firstname" value={credentials.firstname}
-                    placeholder="Veuillez saisir un prenom" change={handleChange} />
-
-                <Inputlabel type="email" label="Email" name="email" value={credentials.email}
-                    placeholder="Veuillez saisir un email" change={handleChange} />
-
-                <Inputlabel type="password" label="Mot de passe" name="password" value={credentials.password}
-                    placeholder="Veuillez saisir un mot de passe" change={handleChange} />
-
-                <Inputlabel type="tel" label="Tél" name="phone" value={credentials.phone}
-                    placeholder="Veuillez saisir un numéro de téléphone" change={handleChange} />
-
-                <Inputlabel type="text" label="Pays" name="country" value={credentials.address.country}
-                    placeholder="Veuillez saisir un pays" change={handleChange} />
-
-                <Inputlabel type="text" label="Ville" name="city" value={credentials.address.city}
-                    placeholder="Veuillez saisir une ville" change={handleChange} />
-
-                <Inputlabel type="text" label="N°" name="num" value={credentials.address.num}
-                    placeholder="Veuillez saisir un n°" change={handleChange} />
-
-                <Inputlabel type="text" label="Rue" name="street" value={credentials.address.street}
-                    placeholder="Veuillez saisir une rue" change={handleChange} />
-
-                <Inputlabel type="text" label="Code postale" name="postalCode" value={credentials.address.postalCode}
-                    placeholder="Veuillez saisir un code postal" change={handleChange} />
-
-                <button className="btn btn-primary form-control" type="submit">Enregistrer</button>
-            </form>
+            <UserForm handleChange={handleChange} handleSubmit={handleSubmit} user={credentials} showBtn={true} showPassword={true}/>
         </>
     )
 }

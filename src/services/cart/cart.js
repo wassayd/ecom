@@ -26,4 +26,12 @@ export const addProductToCart = (productCart) => {
         article.quantity += parseInt(productCart.quantity);
         setCart(cart);
     }
+
+    window.setNotifification(getCart().length)
+}
+
+
+export const removeCart = _ => {
+    localStorage.removeItem(KEY_CART)
+    window.setNotifification(0)
 }

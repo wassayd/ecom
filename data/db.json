@@ -41,29 +41,51 @@
   ],
   "command": [
     {
-      "id": 1,
-      "userId": 1,
-      "date": "28/04/2021",
-      "produits": [
-        {
-          "produitId": 1,
-          "quantite": 2,
-          "taille": "XL",
-          "couleur": "Rouge"
-        },
-        {
-          "produitId": 1,
-          "quantite": 1,
-          "taille": "L",
-          "couleur": "Rouge"
-        },
-        {
-          "produitId": 1,
-          "quantite": 1,
-          "taille": "L",
-          "couleur": "Vert"
+      "deliveryMethod": "Collisimo",
+      "sneakers": [
+        507844,
+        235806,
+        218099,
+        218099
+      ],
+      "userDelivery": {
+        "firstname": "Said",
+        "lastname": "Waskar",
+        "email": "saidwaskar@gmail.com",
+        "gender": "H",
+        "phone": "0102844512",
+        "address": {
+          "num": "22",
+          "street": "rue esimed",
+          "postalCode": "13015",
+          "city": "Marseille",
+          "country": "France"
         }
-      ]
+      },
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "deliveryMethod": "Collisimo",
+      "sneakers": [
+        52015
+      ],
+      "userDelivery": {
+        "firstname": "Said",
+        "lastname": "Waskar",
+        "email": "saidwaskar@gmail.com",
+        "gender": "H",
+        "phone": "0102844512",
+        "address": {
+          "num": "22",
+          "street": "rue esimed",
+          "postalCode": "13015",
+          "city": "Marseille",
+          "country": "France"
+        }
+      },
+      "userId": 1,
+      "id": 2
     }
   ],
   "newsletter": [

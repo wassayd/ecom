@@ -14,4 +14,17 @@ export const isConnected = _ => {
 
 export const logout = _ => {
     window.localStorage.removeItem(USER_KEY)
-}    
+}
+
+export const getUser = _ => {
+    return JSON.parse(localStorage.getItem(USER_KEY)) || [{}]
+}
+
+export const getUserInformation = _ => {
+    const user = getUser()[0]
+
+    delete user.password;
+    delete user.id;
+    console.log(user);
+    return user;
+}
