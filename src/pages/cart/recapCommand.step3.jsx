@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
 import { removeCart } from "../../services/cart/cart";
+import { formattedDate } from "../../services/utlilities";
 
 export default function RecapCommand(props) {
   const [command, setCommand] = useState({
@@ -34,7 +35,7 @@ export default function RecapCommand(props) {
   };
 
   const isValid = (_) => {
-    console.log(Object.values(payment));
+     
     if (Object.values(payment).filter((item) => item === "").length > 0) {
       toast.error("Please compelete the form", {
         position: "top-right",
@@ -71,20 +72,23 @@ export default function RecapCommand(props) {
 
   const validateCommand = () => {
     const { deliveryMethod, products, userDelivery, userId } = props.state;
+
     let productsFiltered = (_) => {
-      const res = [];
+      let res = [];
       products.forEach((p) => {
-        res.push(p.product.id);
+        res.push({...p, product: p.product.id })
       });
-      return res;
-    };
-    const command = {
-      deliveryMethod,
-      sneakers: productsFiltered(),
-      userDelivery,
-      userId,
+      return res
     };
 
+    const command = {
+      deliveryMethod,
+      orderLine: productsFiltered(),
+      userDelivery,
+      userId,
+      date: formattedDate()
+    };
+ 
     return axios.post(BASE_URL + "/command", command);
   };
 

@@ -41,12 +41,15 @@
   ],
   "command": [
     {
-      "deliveryMethod": "Collisimo",
-      "sneakers": [
-        507844,
-        235806,
-        218099,
-        218099
+      "deliveryMethod": "Relay point",
+      "orderLine": [
+        {
+          "product": 507844,
+          "quantity": 7,
+          "size": 33,
+          "totalPrice": 812,
+          "price": 116
+        }
       ],
       "userDelivery": {
         "firstname": "Said",
@@ -63,12 +66,19 @@
         }
       },
       "userId": 1,
+      "date": "06/05/2021",
       "id": 1
     },
     {
-      "deliveryMethod": "Collisimo",
-      "sneakers": [
-        52015
+      "deliveryMethod": "Relay point",
+      "orderLine": [
+        {
+          "product": 180155,
+          "quantity": 1,
+          "size": 33,
+          "totalPrice": 132,
+          "price": 132
+        }
       ],
       "userDelivery": {
         "firstname": "Said",
@@ -85,7 +95,37 @@
         }
       },
       "userId": 1,
+      "date": "06/05/2021",
       "id": 2
+    },
+    {
+      "deliveryMethod": "Relay point",
+      "orderLine": [
+        {
+          "product": 218099,
+          "quantity": 1,
+          "size": "45",
+          "totalPrice": 132,
+          "price": 132
+        }
+      ],
+      "userDelivery": {
+        "firstname": "Said",
+        "lastname": "Waskar",
+        "email": "saidwaskar@gmail.com",
+        "gender": "H",
+        "phone": "0102844512",
+        "address": {
+          "num": "22",
+          "street": "rue esimed",
+          "postalCode": "13015",
+          "city": "Marseille",
+          "country": "France"
+        }
+      },
+      "userId": 1,
+      "date": "06/05/2021",
+      "id": 3
     }
   ],
   "newsletter": [

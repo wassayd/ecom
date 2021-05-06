@@ -18,7 +18,6 @@ export default function Cart(props) {
     const productCart = products[name];
     productCart.quantity = value == "" ? 1 : +parseInt(value);
     productCart.totalPrice = productCart.quantity * productCart.price;
-
     setProducts([...products]);
   };
 

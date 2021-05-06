@@ -9,11 +9,11 @@ export default function UserForm({handleSubmit, handleChange, user, showBtn, sho
                     <div className="form-group">
                         <label htmlFor="gender">Civilité</label>
                         <div className="custom-control custom-radio">
-                            <input type="radio" id="customRadio1" name="gender" className="custom-control-input" onChange={handleChange} value="H"/>
+                            <input type="radio" id="customRadio1" name="gender" className="custom-control-input" onChange={handleChange} checked={ user.gender === "H" ? true : false} value="H"/>
                             <label className="custom-control-label" htmlFor="customRadio1">Homme</label>
                         </div>
                         <div className="custom-control custom-radio">
-                            <input type="radio" id="customRadio2" name="gender" className="custom-control-input" onChange={handleChange} value="F"/>
+                            <input type="radio" id="customRadio2" name="gender" className="custom-control-input" onChange={handleChange} checked={ user.gender === "F" ? true : false} value="F"/>
                             <label className="custom-control-label" htmlFor="customRadio2">Femme</label>
                         </div>      
                     </div>
