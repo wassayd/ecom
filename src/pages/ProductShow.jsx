@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../services/data'
 import { centsToEuro, convertAllSize } from '../services/product/product'
 import { addProductToCart } from '../services/cart/cart'
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductShow({ match }) {
@@ -51,7 +51,6 @@ export default function ProductShow({ match }) {
 
     return (
         <>
-        <ToastContainer/>
             <div className="d-flex">
                 <img className="border m-5" src={product.original_picture_url} alt="" width="50%" />
                 <div className="content">

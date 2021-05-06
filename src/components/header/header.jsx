@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { getCart } from "../../services/cart/cart";
 import { logout } from "../../services/user/auth";
@@ -7,8 +7,9 @@ import Menuli from "./menuli";
 
 export default function Header() {
   const context = useContext(AuthContext);
-  let [notif, setNotif] = useState(getCart().length)
-  window.setNotifification = setNotif
+  let [notif, setNotif] = useState(getCart().length);
+  window.setNotifification = setNotif;
+  const history = useHistory();
 
   const menu = [
     {
@@ -33,6 +34,16 @@ export default function Header() {
     e.preventDefault();
     logout();
     context.setConnected(false);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+
+    if(location.pathname == '/products'){
+      window.location.reload()
+    }else{
+      history.push('/products', {search:window.search})
+    }
   };
 
   if (context.isConnected) {
@@ -76,23 +87,17 @@ export default function Header() {
           {menu.map(({ name, url, onClick }, key) => (
             <Menuli key={key} name={name} to={url} onClick={onClick} />
           ))}
-          {/* <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
-                        <div className="dropdown-menu">
-                            <a className="dropdown-item" href="#">Action</a>
-                            <a className="dropdown-item" href="#">Another action</a>
-                            <a className="dropdown-item" href="#">Something else here</a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li> */}
         </ul>
-        <form className="form-inline my-2 my-lg-0">
+        <form className="form-inline my-2 my-lg-0" onSubmit={handleSearch}>
           <Link className="btn btn-outline-light btn-floating m-1" to="/profil">
             <i style={{ fontSize: "14px" }} className="fas fa-user"></i>
           </Link>
-          <Link id='nbProduct-container' className="btn btn-outline-light btn-floating m-1" to="/cart">
-            {notif > 0 && <span id='nbProduct'>{notif}</span>}
+          <Link
+            id="nbProduct-container"
+            className="btn btn-outline-light btn-floating m-1"
+            to="/cart"
+          >
+            {notif > 0 && <span id="nbProduct">{notif}</span>}
             <i
               style={{ fontSize: "14px" }}
               className="fas fa-shopping-cart"
@@ -102,8 +107,13 @@ export default function Header() {
             className="form-control mr-sm-2"
             type="text"
             placeholder="Search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
-          <button className="btn btn-secondary my-2 my-sm-0" type="submit">
+          <button
+            className="btn btn-secondary my-2 my-sm-0"
+            type="submit"
+          >
             <i style={{ fontSize: "14px" }} className="fas fa-search"></i>
           </button>
         </form>

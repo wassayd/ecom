@@ -8,13 +8,16 @@ import Header from './components/header/header';
 import Routing from './routing/router';
 import { isConnected } from './services/user/auth';
 import PrivateRoute from './routing/privateRoute'
-
+import { ToastContainer } from "react-toastify";
 export const AuthContext = React.createContext({
   isConnected: false,
   setConnected: value => { }
 })
 
 function App() {
+  const [search, setSearch] = useState('')
+  window.search = search;
+  window.setSearch = setSearch
 
   const [auth, setAuth] = useState(isConnected())
   const contexValue = {
@@ -24,6 +27,7 @@ function App() {
   
   return (
     <>
+     <ToastContainer />
       <AuthContext.Provider value={contexValue}>
         <Router>
           <Header/>

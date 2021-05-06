@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
-import Inputlabel from '../components/form/inputlabel';
 import { BASE_URL } from '../services/data';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { setUserLocalStorage } from '../services/user/user.service';
 import { AuthContext } from '../App';
@@ -93,7 +92,6 @@ export default function Register() {
 
     return (
         <>
-            <ToastContainer/>
             <h1>S'inscrire</h1>
             <UserForm handleChange={handleChange} handleSubmit={handleSubmit} user={credentials} showBtn={true} showPassword={true}/>
         </>

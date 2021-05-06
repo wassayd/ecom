@@ -71,12 +71,16 @@ export default function RecapCommand(props) {
   };
 
   const validateCommand = () => {
-    const { deliveryMethod, products, userDelivery, userId } = props.state;
-
+    const { deliveryMethod, products, userDelivery, userId, total } = props.state;
+    console.log(props.state);
     let productsFiltered = (_) => {
       let res = [];
       products.forEach((p) => {
-        res.push({...p, product: p.product.id })
+        res.push({...p, product: {
+          grid_picture_url : p.product.grid_picture_url,
+          name : p.product.name,
+          color: p.product.color
+        } })
       });
       return res
     };
@@ -86,7 +90,8 @@ export default function RecapCommand(props) {
       orderLine: productsFiltered(),
       userDelivery,
       userId,
-      date: formattedDate()
+      date: formattedDate(),
+      total
     };
  
     return axios.post(BASE_URL + "/command", command);

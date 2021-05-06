@@ -9,10 +9,12 @@
   "dependencies": {
     "@brainhubeu/react-carousel": "^2.0.3",
     "axios": "^0.21.1",
+    "boostrap": "^2.0.0",
     "json-server": "^0.16.3",
     "react": "^17.0.0",
     "react-confirm-alert": "^2.7.0",
     "react-dom": "^17.0.0",
+    "react-js-pagination": "^3.0.3",
     "react-router-dom": "^5.2.0",
     "react-step-builder": "^2.0.10",
     "react-toastify": "^7.0.4",

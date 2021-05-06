@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getCart } from "../../services/cart/cart";
 import ProductTable from "./productTable";
@@ -59,7 +59,6 @@ export default function Cart(props) {
 
   return (
     <>
-      <ToastContainer />
       <h1 className="my-5">Your cart</h1>
 
       <ProductTable products={products} handleChange={handleChange} />
